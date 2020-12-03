@@ -1,7 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-
 # Part 1
 
 with open('inputp2.txt') as f:

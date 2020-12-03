@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 with open('inputp3.txt') as f:
     inputs = [[x[0:-1]] for x in f]
         

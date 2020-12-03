@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Dec  1 20:17:38 2020
-
-@author: stuartburrell
-"""
-
 from itertools import product
 
 with open('inputp1.txt') as f:
