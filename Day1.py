@@ -6,15 +6,21 @@ Created on Tue Dec  1 20:17:38 2020
 @author: stuartburrell
 """
 
+from itertools import product
+
 with open('inputp1.txt') as f:
     nums = [int(x) for x in f]
-    
-nums.sort()
 
-nums = [x for x in nums if x <= 2020 - nums[0] - nums[1]]
+# Part 1
 
-for i in nums:
-    for j in nums:
-        for k in nums:
-            if i + j + k == 2020:
-                print(i*j*k)
+for i, j in product(nums, nums):
+    if i + j == 2020:
+        print('Part 1: ', i * j)
+        break
+            
+# Part 2 
+                
+for i, j, k in product(nums, nums, nums):
+    if i + j + k == 2020:
+        print('Part 2: ', i * j * k)
+        break
