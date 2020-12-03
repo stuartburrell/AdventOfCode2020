@@ -7,7 +7,6 @@ def tree_counter(tree_map, right, down):
     current = [0, 0]
     total_trees = 0
     depth = len(inputs)
-    
     while current[0] < depth:
         if inputs[current[0]][0][current[1]] == '#':
             total_trees += 1

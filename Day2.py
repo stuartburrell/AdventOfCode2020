@@ -1,14 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Dec  2 12:35:25 2020
 
-@author: stuartburrell
-"""
 
-'''
-part 1.
-'''
+# Part 1
 
 with open('inputp2.txt') as f:
     inputs = [x for x in f]
@@ -36,12 +30,9 @@ for raw in inputs:
     if test1(proc[0], proc[1], proc[2], proc[3]):
         total1 +=1 
         
-print('Part 1 answer:', total1)
+print('Part 1: ', total1)
 
-
-'''
-part 2.
-'''
+# Part 2
  
 def test2(string, pos1, pos2, letter):
     count = 0
@@ -59,20 +50,4 @@ for raw in inputs:
     if test2(proc[0], proc[1], proc[2], proc[3]):
         total2 +=1 
         
-print('Part 2 answer:', total2)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print('Part 2: ', total2)
