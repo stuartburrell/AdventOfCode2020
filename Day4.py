@@ -20,7 +20,7 @@ def valid_check1(string):
     return True       
     
 total_valid1 = 0
-p1valid = [] # store inputs with valid fields for part 2
+p1valid = [] 
 for s in processed:
     if valid_check1(s):
         total_valid1 += 1
@@ -50,13 +50,10 @@ def height_check(string):
 
 def hcol_check(string):
     valid = [str(x) for x in range(10)] + ['a','b','c','d','e','f']
-    
     if string[0] != '#':
         return False
-    
     if len(string[1:]) != 6:
         return False
-    
     for char in string[1:]:
         if char not in valid:
             return False
