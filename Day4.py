@@ -49,11 +49,11 @@ def height_check(string):
     return False
 
 def hcol_check(string):
-    valid = [str(x) for x in range(10)] + ['a','b','c','d','e','f']
     if string[0] != '#':
         return False
     if len(string[1:]) != 6:
         return False
+    valid = [str(x) for x in range(10)] + ['a','b','c','d','e','f']
     for char in string[1:]:
         if char not in valid:
             return False
@@ -66,9 +66,9 @@ def ecol_check(string):
     return True
 
 def pass_check(string):
-    valid = [str(x) for x in range(10)]
     if len(string) != 9:
         return False
+    valid = [str(x) for x in range(10)]
     for char in string:
         if char not in valid:
             return False
@@ -78,31 +78,24 @@ def valid_check2(string):
     s = string.replace(' ', '\n').split('\n')[0:-1]
     for entry in s: 
         code, value_str = entry.split(':')[0], entry.split(':')[1]
-        if code == 'byr':
-            if not year_check(value_str, 1920, 2002):
-                return False   
-        if code == 'iyr':
-            if not year_check(value_str, 2010, 2020):
-                return False   
-        if code == 'eyr':
-            if not year_check(value_str, 2020, 2030):
-                return False 
-        if code == 'hgt':
-            if not height_check(value_str):
-                return False
-        if code == 'hcl':
-            if not hcol_check(value_str):
-                return False 
-        if code == 'ecl':
-            if not ecol_check(value_str):
-                return False
-        if code == 'pid':
-            if not pass_check(value_str):
-                return False
+        if code == 'byr' and not year_check(value_str, 1920, 2002):
+            return False   
+        if code == 'iyr' and not year_check(value_str, 2010, 2020):
+            return False   
+        if code == 'eyr' and not year_check(value_str, 2020, 2030):
+            return False 
+        if code == 'hgt' and not height_check(value_str):
+            return False
+        if code == 'hcl' and not hcol_check(value_str):
+            return False 
+        if code == 'ecl' and not ecol_check(value_str):
+            return False
+        if code == 'pid' and not pass_check(value_str):
+            return False
     return True
 
 total_valid2 = 0
-for s in p1valid:
-    if valid_check2(s):
+for string in p1valid:
+    if valid_check2(string):
         total_valid2 += 1
 print('Part 2: ', total_valid2)
