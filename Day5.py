@@ -4,12 +4,10 @@ with open('inputp5.txt') as f:
     inputs = [[x[:-4], x[-4:-1]] for x in f]
     
 def row(string):
-    string = string.replace('F','0').replace('B', '1')
-    return int(string, 2)
+    return int(string.replace('F','0').replace('B', '1'), 2)
 
 def col(string):
-    string = string.replace('L','0').replace('R', '1')
-    return int(string, 2)
+    return int(string.replace('L','0').replace('R', '1'), 2)
 
 def seat_id(row, col):
     return 8*row + col
