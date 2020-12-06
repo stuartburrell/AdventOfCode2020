@@ -1,4 +1,4 @@
-with open('inputp4.txt') as f:
+with open('inputd4.txt') as f:
     inputs = [x for x in f]
 
 processed = ['']

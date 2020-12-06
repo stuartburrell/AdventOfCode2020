@@ -1,6 +1,6 @@
 # Part 1
 
-with open('inputp2.txt') as f:
+with open('inputd2.txt') as f:
     inputs = [x for x in f]
     
 def process(raw):

@@ -1,4 +1,4 @@
-with open('inputp3.txt') as f:
+with open('inputd3.txt') as f:
     inputs = [[x[0:-1]] for x in f]
         
 def tree_counter(tree_map, right, down):

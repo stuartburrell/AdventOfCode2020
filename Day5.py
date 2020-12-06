@@ -1,6 +1,6 @@
 # Part 1
 
-with open('inputp5.txt') as f:
+with open('inputd5.txt') as f:
     inputs = [[x[:-4], x[-4:-1]] for x in f]
     
 def row(string):
