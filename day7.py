@@ -32,12 +32,12 @@ def possible_bags(colour, log = set(), seen = []):
 
 # Total number of outer bags that eventually contain a shiny gold bag
     
-total_count = 0
+total = 0
 for key in rules.keys():
     if 'shinygold' in possible_bags(key):
-        total_count += 1
+        total += 1
         
-print('Part 1: ', total_count)
+print('Part 1: ', total)
 
 # Recursive function to count number of bags contained in given bag
 
