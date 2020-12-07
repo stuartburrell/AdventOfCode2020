@@ -45,9 +45,6 @@ def bag_counter(col):
     if rules[col] == []:
         return 0
     else:
-        total = sum([x[0] for x in rules[col]])
-        for i in range(len(rules[col])):
-            total += rules[col][i][0] * bag_counter(rules[col][i][1])
-        return total 
+        return sum([x[0] + x[0] * bag_counter(x[1]) for x in rules[col]])
 
 print('Part 2: ', bag_counter('shinygold'))
