@@ -1,4 +1,4 @@
-with open('inputd7.txt') as f:
+with open('data/inputd7.txt') as f:
     inputs = [x for x in f]
 
 # Clean input

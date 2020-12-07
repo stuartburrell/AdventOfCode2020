@@ -1,6 +1,6 @@
 from itertools import product
 
-with open('inputd1.txt') as f:
+with open('data/inputd1.txt') as f:
     nums = [int(x) for x in f]
 
 # Part 1

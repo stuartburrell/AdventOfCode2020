@@ -1,4 +1,4 @@
-with open('inputd6.txt') as f:
+with open('data/inputd6.txt') as f:
     inputs = [x for x in f]
 
 groups = ['']
