@@ -11,7 +11,7 @@ for i in range(len(inputs)):
                                             ' ','')
     inputs[i][1] = inputs[i][1][:-2].split(',')
  
-# Arrange data into dictionary
+# Arrange data as a dictionary
 
 rules = dict()
 for rule in inputs:
