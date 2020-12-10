@@ -16,7 +16,7 @@ print('Part 1: ', diffs[0] * diffs[2])
 
 num_paths = {x:0 for x in range(-2, max(inputs))}
 num_paths[0] = 1
-for value in inputs:
-    num_paths[value] = sum([num_paths[value - i] for i in range(1, 4)])
+for x in inputs:
+    num_paths[x] = num_paths[x - 1] + num_paths[x - 2] + num_paths[x - 3]
 
 print('Part 2: ', num_paths[max(inputs)])
