@@ -30,7 +30,7 @@ def powerset(iterable):
     ch = chain.from_iterable(combinations(s, r) for r in range(len(s)+1))
     return [list(x) for x in ch]
 
-def substring_comp(nums):
+def valid_substrings(nums):
     total = 0
     if nums[0] == 0 and nums[1] == 1:
          ps = powerset(nums[1:-2])
@@ -63,5 +63,5 @@ for i in range(1, n):
         if inputs[i] - inputs[i - 1] != 3:
             ones = True      
 
-perms = [substring_comp(x) for x in groups]
+perms = [valid_substrings(x) for x in groups]
 print('Part 2: ', prod(perms))
