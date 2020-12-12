@@ -1,5 +1,4 @@
 import numpy as np
-import copy
 
 with open('data/inputd11.txt') as f:
     inputs = [x[:-1] for x in f]
