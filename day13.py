@@ -1,5 +1,3 @@
-import numpy as np
-
 # Part 1
 
 with open('data/inputd13.txt') as f:
@@ -18,20 +16,17 @@ print('Part 1: ', ids[ind_best_bus]*wait_times[ind_best_bus] )
 offsets = {x : inputs[1].split(',').index(str(x)) for x in ids}
 
 '''
+ Apply Chinese Remainder Theorem: we seek t such that
  
- Apply Chinese Remainder Theorem: Find t such that
- 
- t mod 23 = 0
- t mod 41 = 41 - 13
- t mod 733 = 733 - 23
- .
- .
- .
+t mod 23 = 0
+t mod 41 = 41 - 13
+t mod 733 = 733 - 23
+.
+.
+.
 t mod bus_ID = bus_ID - offset[bus_ID]
 
-Using a standard solver, t = 775230782877242.
-
-
+Using a standard CRT solver: t = 775230782877242.
 '''
 
 print('Part 2: ', 775230782877242)
