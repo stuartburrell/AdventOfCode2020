@@ -1,27 +1,24 @@
 import numpy as np
+from itertools import product
 
 with open('data/inputd17.txt') as f:
     inputs = [x[0:-1] for x in f]
 
-def process_cube(coords, active_log):
+def process_cube(coords, active_log, dimension):
     number_active = 0
-    for i in [-1, 0, 1]:
-        for j in [-1, 0, 1]:
-            for k in [-1, 0, 1]:
-                if (i, j, k) != (0, 0, 0):
-                    if active_log.get(tuple(np.array(coords) + np.array([i, j, k]))):
-                        number_active += 1
-    
+    for increment in product([-1, 0, 1], repeat = dimension):
+        if increment != tuple([0 for i in range(dimension)]):
+            if active_log.get(tuple(np.array(coords) + np.array(increment))):
+                        number_active += 1  
     if active_log.get(coords):
         if number_active in [2, 3]:
             return True
-        else:
-            return False
     else:
         if number_active == 3:
             return True
-        else:
-            return False
+    return False
+
+# Part 1
         
 active = {}
 for i, row in enumerate(inputs):
@@ -34,53 +31,22 @@ zmin, zmax = -1, 1
 
 cycle = 1
 while cycle < 7:
-    
     buffer_active = active.copy()
     for x in range(xmin, xmax + 1):
         for y in range(ymin, ymax + 1):
             for z in range(zmin, zmax + 1):
-                buffer_active[(x, y, z)] = process_cube((x, y, z), active)
+                buffer_active[(x, y, z)] = process_cube((x, y, z), active, 3)
     active = buffer_active.copy()
     
+    xmin, xmax = xmin - 1, xmax + 1
+    ymin, ymax = ymin - 1, ymax + 1
+    zmin, zmax = zmin - 1, zmax + 1
     cycle += 1
-    xmin -= 1
-    xmax += 1
-    ymin -= 1
-    ymax += 1
-    zmin -= 1
-    zmax += 1
- 
-    
-count_active = 0
-for key in active:
-    if active[key]:
-        count_active += 1
 
-print('Part 1: ', count_active)
+print('Part 1: ', sum([1 for key in active if active[key] == True]))
 
 # Part 2
-
-def process_cube4d(coords, active_log):
-    number_active = 0
-    for i in [-1, 0, 1]:
-        for j in [-1, 0, 1]:
-            for k in [-1, 0, 1]:
-                for l in [-1, 0, 1]:
-                    if (i, j, k, l) != (0, 0, 0, 0):
-                        if active_log.get(tuple(np.array(coords) + np.array([i, j, k, l]))):
-                            number_active += 1
-    
-    if active_log.get(coords):
-        if number_active in [2, 3]:
-            return True
-        else:
-            return False
-    else:
-        if number_active == 3:
-            return True
-        else:
-            return False
-        
+ 
 active = {}
 for i, row in enumerate(inputs):
     for j, char in enumerate(row):
@@ -93,29 +59,19 @@ wmin, wmax = -1, 1
 
 cycle = 1
 while cycle < 7:
-    
     buffer_active = active.copy()
     for x in range(xmin, xmax + 1):
         for y in range(ymin, ymax + 1):
             for z in range(zmin, zmax + 1):
                 for w in range(wmin, wmax + 1):
-                    buffer_active[(x, y, z, w)] = process_cube4d((x, y, z, w), active)
+                    buffer_active[(x, y, z, w)] = process_cube((x, y, z, w), 
+                                                               active, 4)
     active = buffer_active.copy()
-    
-    cycle += 1
-    xmin -= 1
-    xmax += 1
-    ymin -= 1
-    ymax += 1
-    zmin -= 1
-    zmax += 1
-    wmin -= 1
-    wmax += 1
- 
-    
-count_active = 0
-for key in active:
-    if active[key]:
-        count_active += 1
 
-print('Part 2: ', count_active)
+    xmin, xmax = xmin - 1, xmax + 1
+    ymin, ymax = ymin - 1, ymax + 1
+    zmin, zmax = zmin - 1, zmax + 1
+    wmin, wmax = wmin - 1, wmax + 1
+    cycle += 1
+
+print('Part 2: ', sum([1 for key in active if active[key] == True]))
