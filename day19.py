@@ -63,26 +63,26 @@ def test_message(string):
         return False
     else:
         num_42_blocks, num_31_blocks = 1, 1
-        block = 8
+        block = -8
 
     regime31 = True
     while regime31:
-        if string[-block - 8:-block] in rules_parsed['31']:
-            block += 8
+        if string[block - 8 : block] in rules_parsed['31']:
+            block -= 8
             num_31_blocks += 1 
-        elif string[block:block+8] in rules_parsed['42']:
+        elif string[block - 8 : block] in rules_parsed['42']:
             regime31 = False
         else:
             return False
         
     regime42 = True
     while regime42:
-        if string[-block - 8: -block] not in rules_parsed['42']:
+        if string[block - 8: block] not in rules_parsed['42']:
             return False
         else:
             num_42_blocks += 1
-            block += 8
-        if block == len(string) and num_42_blocks > num_31_blocks:
+            block -= 8
+        if block - 8 == -len(string) and num_42_blocks > num_31_blocks:
             return True
 
 print('Part 2: ', sum([1 for m in messages if test_message(m)]))
