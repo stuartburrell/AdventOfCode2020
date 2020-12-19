@@ -11,7 +11,6 @@ for key in rules:
         part1 = rules[key].split(' | ')[0]
         part2 = rules[key].split(' | ')[1]
         rules[key] = [[x for x in part1.split(' ')], [x for x in part2.split(' ')]]
-        
 
 rules_parsed = {}
 for key in rules:
