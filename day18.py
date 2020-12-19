@@ -1,8 +1,6 @@
 with open('data/inputd18.txt') as f:
     inputs = [x[0:-1].replace(' ', '') for x in f]
-    
-# Part 1
-    
+
 def convert_string_to_list(string):
     output = [string[0]]
     i  = 1
@@ -59,6 +57,8 @@ def process_string(string, advanced):
                     else:
                         j += 1
     return basic_sum(parsed, advanced)
+
+# Part 1
 
 print('Part 1: ', sum([process_string(x, advanced = False) for x in inputs]))
 
