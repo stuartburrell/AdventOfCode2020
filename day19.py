@@ -18,25 +18,27 @@ for key in rules:
         rules_parsed[key] = [rules[key][0][0][1]]
 
 def update_parsed(key):
-    test = all(all(x in rules_parsed.keys() for x in rules[key][i]) for i in range(len(rules[key])))
-    if test:
-        rules_parsed[key] = []
-        for i in range(len(rules[key])):
-            if len(rules[key][i]) == 2:
-                for string1 in rules_parsed[rules[key][i][0]]:
-                    for string2 in rules_parsed[rules[key][i][1]]:
-                        rules_parsed[key].append(string1 + string2)
-            elif len(rules[key][i]) == 1:
-                for string1 in rules_parsed[rules[key][i][0]]:
-                    rules_parsed[key].append(string1)
+    rules_parsed[key] = []
+    for i in range(len(rules[key])):
+        if len(rules[key][i]) == 2:
+            for string1 in rules_parsed[rules[key][i][0]]:
+                for string2 in rules_parsed[rules[key][i][1]]:
+                    rules_parsed[key].append(string1 + string2)
+        elif len(rules[key][i]) == 1:
+            for string1 in rules_parsed[rules[key][i][0]]:
+                rules_parsed[key].append(string1)
 
 changed = True
+completed = []
 while changed:
+    changed = False
     old = rules_parsed.copy()
     for key in rules:
-        update_parsed(key)
-    if rules_parsed == old:
-        changed = False
+        test = all(all(x in rules_parsed.keys() for x in rules[key][i]) for i in range(len(rules[key])))
+        if test and key not in completed:
+            update_parsed(key)
+            completed.append(key)
+            changed = True
 
 print('Part 1: ', sum([1 for m in messages if m in rules_parsed['0']]))
 
