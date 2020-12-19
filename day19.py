@@ -47,23 +47,25 @@ new_rules = rules.copy()
 new_rules['8'] = [['42'], ['42', '8']]
 new_rules['11'] = [['42', '31'], ['42', '11', '31']]
 
-'''
-Valid messages are of the form 42*n + 31*k for n, k integers and k > n, 
-where 42 represents any message satisfying rule 42 and similarly for 31.
-'''
-
 def test_message(string): 
+    
+    '''
+    Valid messages are of the form 42*n + 31*k for n, k integers and k > n, 
+    where 42 represents any message satisfying rule 42 and similarly for 31.
+    All messages satisgying 42 or 31 have length 8.
+    '''
+    
     if len(string) % 8 != 0:
         return False
-    if string[0:8] not in rules_parsed['42']:
+    elif string[0:8] not in rules_parsed['42']:
         return False
-    if string[-8:] not in rules_parsed['31']:
+    elif string[-8:] not in rules_parsed['31']:
         return False
-    
-    block = 8
+    else:
+        num_42_blocks, num_31_blocks = 1, 1
+        block = 8
+
     regime31 = True
-    num_31_blocks = 1
-    
     while regime31:
         if string[-block - 8:-block] in rules_parsed['31']:
             block += 8
@@ -73,9 +75,7 @@ def test_message(string):
         else:
             return False
         
-    num_42_blocks = 1
     regime42 = True
-    
     while regime42:
         if string[-block - 8: -block] not in rules_parsed['42']:
             return False
